@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Schiffe Versenken - Hotseat</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="app">
+        <header>
+            <h1>Schiffe Versenken</h1>
+        </header>
+
+        <!-- Start Screen -->
+        <div id="start-screen" class="screen active">
+            <div class="glass-panel">
+                <h2>Willkommen Kommandant</h2>
+                <p>Wähle deinen Spielmodus aus.</p>
+                <div class="action-buttons" style="display: flex; gap: 1rem; justify-content: center; margin-top: 1.5rem;">
+                    <button id="btn-start-pvp" class="primary-btn" style="margin-top: 0;">Gegen Freund</button>
+                    <button id="btn-start-ai" class="secondary-btn" style="margin-top: 0;">Gegen Computer</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Transition Screen -->
+        <div id="transition-screen" class="screen">
+            <div class="glass-panel transition-panel">
+                <h2 id="transition-title">Spielerwechsel</h2>
+                <p id="transition-message">Bitte das Gerät an Spieler X übergeben.</p>
+                <button id="btn-ready" class="primary-btn">Ich bin bereit</button>
+            </div>
+        </div>
+
+        <!-- Setup Screen -->
+        <div id="setup-screen" class="screen">
+            <div class="glass-panel setup-layout">
+                <div class="board-section">
+                    <h2 id="setup-player-title">Spieler 1 - Flotte platzieren</h2>
+                    <div id="setup-board" class="board"></div>
+                </div>
+                <div class="controls-section">
+                    <h3>Verfügbare Schiffe</h3>
+                    <div id="fleet-container" class="fleet-container">
+                        <!-- Schiffe werden hier per JS generiert -->
+                    </div>
+                    <div class="action-buttons">
+                        <button id="btn-rotate" class="secondary-btn">Drehen (Ausrichtung: <span id="orientation-label">Horizontal</span>)</button>
+                        <button id="btn-finish-setup" class="primary-btn" disabled>Aufstellung abschließen</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Battle Screen -->
+        <div id="battle-screen" class="screen">
+            <div class="battle-header">
+                <h2 id="battle-player-title">Zug: Spieler 1</h2>
+                <p id="battle-status">Wähle ein Zielkoordinaten auf dem Radarfeld.</p>
+            </div>
+            
+            <div class="battle-layout">
+                <div class="board-section small">
+                    <h3>Eigene Flotte</h3>
+                    <div id="battle-own-board" class="board board-small"></div>
+                </div>
+                <div class="board-section large">
+                    <h3>Radar (Gegnerfeld)</h3>
+                    <div id="battle-target-board" class="board board-target"></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Game Over Screen -->
+        <div id="gameover-screen" class="screen">
+            <div class="glass-panel">
+                <h2 id="winner-title">Spieler X gewinnt!</h2>
+                <p>Alle gegnerischen Schiffe wurden vernichtet.</p>
+                <button id="btn-restart" class="primary-btn">Neues Spiel</button>
+            </div>
+        </div>
+
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
